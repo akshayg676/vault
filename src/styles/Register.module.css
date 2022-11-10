@@ -2,15 +2,19 @@
   max-width: 25rem;
   margin: 2rem auto;
   padding: 2rem;
-  color: #fff;
+  color: #0a0a0a;
   border-radius: 10px;
-  background: #8360c3; /* fallback for old browsers */
+  background: #11998e; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #8360c3,
-    #2ebf91
+    #38ef7d,
+    #11998e
   ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #8360c3, #2ebf91);
+  background: linear-gradient(
+    to right,
+    #38ef7d,
+    #11998e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .title {
   font-size: clamp(1.7rem, 1rem + 1.6368vw, 2.5rem);
@@ -22,7 +26,7 @@
   font-size: 1rem;
   border-radius: 7px;
   color: antiquewhite;
-  background-color: rgba(136, 29, 136, 0.86);
+  background-color: #155799;
   border: none;
   margin-top: 1rem;
 }
@@ -30,5 +34,5 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
