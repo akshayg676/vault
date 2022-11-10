@@ -1,0 +1,26 @@
+.errorContainer {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.link {
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+
+.button {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #0e0e0e;
+  color: #fff;
+}
+.button:hover {
+  transform: translateY(-0.25rem);
+}
