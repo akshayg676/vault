@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "../styles/Register.module.css";
 import { Input } from "./index";
+import { Link } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -76,6 +77,13 @@ const Resgister = () => {
           errorMessage={errors.confirmPassword?.message}
         />
         <button className={styles["button"]}>Sign Up</button>
+        <p className={styles["toggle"]}>
+          Already have an account?
+          <Link to="/login" className={styles["link"]}>
+            {" "}
+            Sign In
+          </Link>
+        </p>
       </form>
     </div>
   );
