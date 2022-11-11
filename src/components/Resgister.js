@@ -41,6 +41,7 @@ const Resgister = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -72,6 +73,7 @@ const Resgister = () => {
         ])
       );
       toast.success("User Registration Successful!");
+      reset();
     }
     setLoading(false);
   };
