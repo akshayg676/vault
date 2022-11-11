@@ -38,6 +38,7 @@ const Login = () => {
         localStorage.setItem("AuthUser", true);
         //check if the user have admin permission
         if (currentUser.role === "admin") {
+          localStorage.setItem("AuthAdmin", true);
           navigate("/user/admin");
         } else {
           navigate(`/user/${currentUser.id}`);

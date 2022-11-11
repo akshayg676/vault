@@ -6,7 +6,7 @@ const Error = () => {
   return (
     <div className={styles["errorContainer"]}>
       <h1 className={styles["errorTxt"]}>404 not found🙄</h1>
-      <Link to="/" className={styles["link"]}>
+      <Link to="/user/user" className={styles["link"]}>
         <button className={styles["button"]}>Back To Home</button>
       </Link>
     </div>

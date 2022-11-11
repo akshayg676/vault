@@ -11,6 +11,7 @@ const Admin = () => {
   //function for user logout
   const handlelogout = () => {
     localStorage.setItem("AuthUser", false);
+    localStorage.setItem("AuthAdmin", false);
     navigate("/login");
   };
   return (
