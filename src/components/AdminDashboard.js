@@ -21,11 +21,14 @@ const Admin = () => {
         Logout
       </button>
       {userList.length > 0 ? (
-        <ul>
-          {userList.map((user) => (
-            <li>{user.username}</li>
-          ))}
-        </ul>
+        <>
+          <p>List of registered users :</p>
+          <ul>
+            {userList.map((user) => (
+              <li>{user.username}</li>
+            ))}
+          </ul>
+        </>
       ) : (
         <p>No registered user(s) found</p>
       )}
