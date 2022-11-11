@@ -9,13 +9,15 @@ function App() {
       "userdata",
       JSON.stringify([
         {
+          id: Date.now(),
           username: "admin",
-          email: "admin@admin.com",
+          email: "admin",
           password: "admin",
           role: "admin",
         },
       ])
     );
+    localStorage.setItem("AuthUser", false);
   }, []);
 
   return (
@@ -25,7 +27,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         {/* routes that need to be protected were passed inside this nested route */}
         <Route element={<PrivateRoutes />}>
-          <Route path="/user/:username" element={<Home />} />
+          <Route path="/user/:userId" element={<Home />} />
           <Route path="/user/admin" element={<Admin />} />
         </Route>
         <Route path="*" element={<Error />} />

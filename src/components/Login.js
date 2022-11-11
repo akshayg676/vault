@@ -9,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 const schema = yup
   .object({
-    username: yup.string().required("Username is a required field"),
+    email: yup.string().required("Email is a required field"),
     password: yup.string().required("Passowrd is a required field"),
   })
   .required();
@@ -29,25 +29,24 @@ const Login = () => {
   const formSubmit = (data) => {
     setLoading(true);
     // getting the user from the localStorage by checking the submitted username
-    const currentUser = userData.find(
-      (user) => user.username === data.username
-    );
+    const currentUser = userData.find((user) => user.email === data.email);
 
     if (currentUser) {
       //checking if the enterd password matches the current user
       if (currentUser.password === data.password) {
         toast.success("Sign in Successful");
+        localStorage.setItem("AuthUser", true);
         //check if the user have admin permission
         if (currentUser.role === "admin") {
           navigate("/user/admin");
         } else {
-          navigate(`/user/${currentUser.username}`);
+          navigate(`/user/${currentUser.id}`);
         }
       } else {
         toast.error("Incorrect Password");
       }
     } else {
-      toast.error("Incorrect Username");
+      toast.error("Incorrect Email");
     }
     setLoading(false);
   };
@@ -58,12 +57,12 @@ const Login = () => {
       <h1 className={styles["title"]}>Login Form</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <Input
-          id="username"
-          placeholder="Enter your name"
+          id="email"
+          placeholder="Enter your email"
           type="text"
-          label="Username"
-          register={{ ...register("username") }}
-          errorMessage={errors.username?.message}
+          label="Email"
+          register={{ ...register("email") }}
+          errorMessage={errors.email?.message}
         />
         <Input
           id="password"

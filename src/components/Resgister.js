@@ -56,6 +56,7 @@ const Resgister = () => {
       setUserData((prev) => [
         ...prev,
         {
+          id: Date.now(),
           username: data.username,
           email: data.email,
           password: data.password,
@@ -67,6 +68,7 @@ const Resgister = () => {
         JSON.stringify([
           ...userData,
           {
+            id: Date.now(),
             username: data.username,
             email: data.email,
             password: data.password,
