@@ -35,7 +35,7 @@ const Resgister = () => {
   const [userData, setUserData] = useState(
     JSON.parse(localStorage.getItem("userdata"))
   );
-  console.log(userData);
+
   const [loading, setLoading] = useState(false);
 
   const {
@@ -59,6 +59,7 @@ const Resgister = () => {
           username: data.username,
           email: data.email,
           password: data.password,
+          role: "client",
         },
       ]);
       localStorage.setItem(
@@ -69,6 +70,7 @@ const Resgister = () => {
             username: data.username,
             email: data.email,
             password: data.password,
+            role: "client",
           },
         ])
       );

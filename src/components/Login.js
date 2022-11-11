@@ -37,7 +37,12 @@ const Login = () => {
       //checking if the enterd password matches the current user
       if (currentUser.password === data.password) {
         toast.success("Sign in Successful");
-        navigate("/");
+        //check if the user have admin permission
+        if (currentUser.role === "admin") {
+          navigate("/user/admin");
+        } else {
+          navigate(`/user/${currentUser.username}`);
+        }
       } else {
         toast.error("Incorrect Password");
       }
