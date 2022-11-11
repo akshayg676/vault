@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "../styles/Register.module.css";
 import { Input } from "./index";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const schema = yup
   .object({
@@ -31,6 +32,12 @@ const schema = yup
   .required();
 
 const Resgister = () => {
+  const [userData, setUserData] = useState(
+    JSON.parse(localStorage.getItem("userdata"))
+  );
+  console.log(userData);
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -38,10 +45,40 @@ const Resgister = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const formSubmit = (data) => console.log(data);
+
+  const formSubmit = (data) => {
+    setLoading(true);
+    if (userData.some((user) => user.email === data.email)) {
+      // check whether the user exists or not by comparing the unique email id.
+      toast.error("An account wit this email already exists");
+    } else {
+      setUserData((prev) => [
+        ...prev,
+        {
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        },
+      ]);
+      localStorage.setItem(
+        "userdata",
+        JSON.stringify([
+          ...userData,
+          {
+            username: data.username,
+            email: data.email,
+            password: data.password,
+          },
+        ])
+      );
+      toast.success("User Registration Successful!");
+    }
+    setLoading(false);
+  };
 
   return (
     <div className={styles["signup"]}>
+      <Toaster />
       <h1 className={styles["title"]}>Registration Form</h1>
       <form onSubmit={handleSubmit(formSubmit)}>
         <Input
@@ -76,7 +113,9 @@ const Resgister = () => {
           register={{ ...register("confirmPassword") }}
           errorMessage={errors.confirmPassword?.message}
         />
-        <button className={styles["button"]}>Sign Up</button>
+        <button disabled={loading} className={styles["button"]}>
+          {loading ? "Loading..." : "Sign Up"}
+        </button>
         <p className={styles["toggle"]}>
           Already have an account?
           <Link to="/login" className={styles["link"]}>

@@ -1,8 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, json } from "react-router-dom";
 import { Login, Home, Register, Error } from "./components";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem(
+      "userdata",
+      JSON.stringify([
+        {
+          username: "admin",
+          email: "admin@admin.com",
+          password: "admin",
+        },
+      ])
+    );
+  }, []);
+
   return (
     <Router>
       <Routes>

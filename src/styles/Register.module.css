@@ -22,13 +22,18 @@
   text-decoration: underline;
 }
 .button {
-  padding: 0.5rem;
+  cursor: pointer;
+  padding: 0.7rem;
   font-size: 1rem;
   border-radius: 7px;
   color: antiquewhite;
   background-color: #155799;
   border: none;
   margin-top: 1rem;
+}
+.button:disabled {
+  opacity: 50%;
+  cursor: auto;
 }
 
 form {
