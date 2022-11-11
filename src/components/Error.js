@@ -6,8 +6,8 @@ const Error = () => {
   return (
     <div className={styles["errorContainer"]}>
       <h1 className={styles["errorTxt"]}>404 not found🙄</h1>
-      <Link to="/user/user" className={styles["link"]}>
-        <button className={styles["button"]}>Back To Home</button>
+      <Link to="/login" className={styles["link"]}>
+        <button className={styles["button"]}>Home</button>
       </Link>
     </div>
   );

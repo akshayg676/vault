@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import styles from "../styles/Home.module.css";
 
 const Home = () => {
@@ -17,11 +17,24 @@ const Home = () => {
   };
   return (
     <div className={styles["container"]}>
-      <h1>Welcome {loggedInUser.username}</h1>
-      <button className={styles["logout"]} onClick={handlelogout}>
-        Logout
-      </button>
-      <p>Your Mail Id : {loggedInUser.email}</p>
+      {loggedInUser ? (
+        <>
+          <h1>Welcome {loggedInUser?.username}</h1>
+          <button className={styles["logout"]} onClick={handlelogout}>
+            Logout
+          </button>
+          <p>Your Mail Id : {loggedInUser?.email}</p>
+        </>
+      ) : (
+        <>
+          <h1>Login to continue</h1>
+          <button className={styles["logout"]}>
+            <Link className={styles["link"]} to="/login">
+              Login
+            </Link>
+          </button>
+        </>
+      )}
     </div>
   );
 };

@@ -38,6 +38,7 @@ const Login = () => {
         localStorage.setItem("AuthUser", true);
         //check if the user have admin permission
         if (currentUser.role === "admin") {
+          //admin user can access both client and admin dashboard
           localStorage.setItem("AuthAdmin", true);
           navigate("/user/admin");
         } else {
